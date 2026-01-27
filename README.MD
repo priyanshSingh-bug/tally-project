@@ -102,7 +102,7 @@ The generated XML can be **directly imported into Tally Prime** without modifica
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/invoice-to-tally.git
+https://github.com/priyanshSingh-bug/tally-project.git
 cd invoice-to-tally
 ```
 
@@ -123,7 +123,7 @@ http://localhost:5000
 ### 3️⃣ Frontend Setup
 
 ```bash
-cd frontend
+cd client
 npm install
 npm run dev
 ```
@@ -131,7 +131,7 @@ npm run dev
 Frontend will run on:
 
 ```
-http://localhost:5173
+http://localhost:3000
 ```
 
 ---

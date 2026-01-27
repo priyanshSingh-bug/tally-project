@@ -54,7 +54,7 @@ const UploadSection = ({ onUpload, loading }) => {
                 border-2 border-dashed rounded-3xl transition-all duration-300 cursor-pointer
                 ${dragActive
                     ? 'border-primary bg-primary/5 scale-[1.01]'
-                    : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50/50'
+                    : 'border-gray-200 hover:border-gray-500 hover:bg-gray-50/50'
                 }
             `}
         >
