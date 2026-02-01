@@ -12,12 +12,6 @@ async function listModels() {
 
     try {
         console.log("Fetching available models...");
-        // Use a basic model to get the client, then list models (if supported directly or via other ID)
-        // actually the SDK exposes it on the class or via a 'getGenerativeModel' which we can't use without a name.
-        // Wait, the SDK doesn't have a direct 'listModels' method exposed easily in the main entry?
-        // Let's try the direct HTTP approach if SDK is obscure, OR just try 'gemini-pro' as a fallback.
-
-        // Actually, let's try a few known candidates in a loop.
         const candidates = [
             "gemini-1.5-flash",
             "gemini-1.5-flash-latest",
@@ -32,9 +26,9 @@ async function listModels() {
                 const model = genAI.getGenerativeModel({ model: modelName });
                 const result = await model.generateContent("Test.");
                 await result.response;
-                console.log("✅ WORKS");
+                console.log("WORKS");
             } catch (e) {
-                console.log(`❌ FAILED (${e.message.split('[')[0].trim()})`);
+                console.log(`FAILED (${e.message.split('[')[0].trim()})`);
             }
         }
 

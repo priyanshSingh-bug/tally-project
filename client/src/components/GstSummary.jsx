@@ -1,4 +1,9 @@
 const GstSummary = ({ summary }) => {
+    const getSummaryClass = (value) => {
+        const isEmpty = !value || value === '-' || value === '0.00';
+        return `font-mono font-medium px-2 py-1 rounded transition-colors ${isEmpty ? 'text-gray-300 bg-background/100' : 'text-gray-900'}`;
+    }
+
     return (
         <div className="card w-full md:w-1/2 mr-auto !p-0">
             <div className="p-6 border-b border-gray-100">
@@ -8,19 +13,19 @@ const GstSummary = ({ summary }) => {
                 <div className="grid grid-cols-3 divide-x divide-gray-50">
                     <div className="p-4 text-center">
                         <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">CGST</p>
-                        <p className={`font-mono font-medium ${summary.cgst === '-' ? 'text-gray-300' : 'text-gray-900'}`}>
+                        <p className={getSummaryClass(summary.cgst)}>
                             {summary.cgst}
                         </p>
                     </div>
                     <div className="p-4 text-center">
                         <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">SGST</p>
-                        <p className={`font-mono font-medium ${summary.sgst === '-' ? 'text-gray-300' : 'text-gray-900'}`}>
+                        <p className={getSummaryClass(summary.sgst)}>
                             {summary.sgst}
                         </p>
                     </div>
                     <div className="p-4 text-center">
                         <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">IGST</p>
-                        <p className={`font-mono font-medium ${summary.igst === '-' ? 'text-gray-300' : 'text-gray-900'}`}>
+                        <p className={getSummaryClass(summary.igst)}>
                             {summary.igst}
                         </p>
                     </div>

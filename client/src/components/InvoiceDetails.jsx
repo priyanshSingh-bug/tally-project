@@ -2,14 +2,17 @@ const DetailCard = ({ title, details }) => (
     <div className="card h-full flex flex-col">
         <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-5">{title}</h3>
         <div className="space-y-4 flex-1">
-            {Object.entries(details).map(([key, value]) => (
-                <div key={key} className="flex flex-col gap-1">
-                    <span className="text-xs text-gray-400 capitalize">{key.replace(/_/g, ' ')}</span>
-                    <span className={`text-sm font-medium ${value === '-' ? 'text-gray-300' : 'text-gray-900'}`}>
-                        {value}
-                    </span>
-                </div>
-            ))}
+            {Object.entries(details).map(([key, value]) => {
+                const isEmpty = !value || value === '-';
+                return (
+                    <div key={key} className="flex flex-col gap-1">
+                        <span className="text-xs text-gray-400 capitalize">{key.replace(/_/g, ' ')}</span>
+                        <span className={`text-sm font-medium px-2 py-0.5 rounded transition-colors ${isEmpty ? 'text-gray-300 bg-background/80 inline-block w-fit' : 'text-gray-900'}`}>
+                            {value}
+                        </span>
+                    </div>
+                );
+            })}
         </div>
     </div>
 )

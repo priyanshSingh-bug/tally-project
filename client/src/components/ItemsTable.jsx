@@ -1,4 +1,9 @@
 const ItemsTable = ({ items }) => {
+    const getCellClass = (value, extra = "") => {
+        const isEmpty = !value || value === '-' || value === '0.00';
+        return `px-6 py-4 text-sm ${extra} ${isEmpty ? 'bg-background/100 text-gray-900' : ''}`;
+    }
+
     return (
         <div className="card overflow-hidden !p-0">
             <div className="p-6 border-b border-gray-100">
@@ -17,15 +22,25 @@ const ItemsTable = ({ items }) => {
                     </thead>
                     <tbody className="divide-y divide-gray-50">
                         {items.map((item, idx) => (
-                            <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
-                                <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.item_name || '-'}</td>
-                                <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
+                            <tr key={idx} className="hover:bg-gray-50/50 transition-colors text-center">
+                                <td className={getCellClass(item.item_name, "font-medium text-gray-900")}>
+                                    {item.item_name || '-'}
+                                </td>
+                                <td className={getCellClass(item.description, "text-gray-500 whitespace-normal break-words min-w-[300px]")}>
                                     {item.description || '-'}
                                 </td>
-                                <td className="px-6 py-4 text-sm text-gray-500 font-mono">{item.hsn || '-'}</td>
-                                <td className="px-6 py-4 text-sm text-gray-900">{item.quantity || '-'}</td>
-                                <td className="px-6 py-4 text-sm text-gray-500">{item.rate || '-'}</td>
-                                <td className="px-6 py-4 text-sm font-semibold text-gray-900">{item.taxable_value || '-'}</td>
+                                <td className={getCellClass(item.hsn, "text-gray-500 font-mono")}>
+                                    {item.hsn || '-'}
+                                </td>
+                                <td className={getCellClass(item.quantity, "text-gray-900")}>
+                                    {item.quantity || '-'}
+                                </td>
+                                <td className={getCellClass(item.rate, "text-gray-500")}>
+                                    {item.rate || '-'}
+                                </td>
+                                <td className={getCellClass(item.taxable_value, "font-semibold text-gray-900")}>
+                                    {item.taxable_value || '-'}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
